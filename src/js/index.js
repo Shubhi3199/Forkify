@@ -41,3 +41,11 @@ elements.searchForm.addEventListener('submit', e=>{
     e.preventDefault();
     controlSearch();
 });
+// EVENT DELEGATION USED - as the btn is initially not present , so to apply an event handler we use closest() method
+elements.searchResPages.addEventListener('click', e=>{
+    const btn = e.target.closest('.btn-inline');
+    const goToPage = parseInt(btn.dataset.goto, 10);
+    searchView.clearList();
+    searchView.renderResults(state.search.result, goToPage);
+    console.log(goToPage);
+});
